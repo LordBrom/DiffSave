@@ -23,11 +23,14 @@ class dsDiffSaveCommand(sublime_plugin.TextCommand, dsController):
 		filePath = workingView.file_name()
 
 		linesA = workingCopy.splitlines( False )
+
+		linesA =[line.strip() for line in linesA]
+
 		fh = open(filePath)
-		linesB = [line.rstrip() for line in fh.readlines()]
+		linesB = [line.strip() for line in fh.readlines()]
 		fh.close()
 
-		diff = difflib.ndiff( linesA, linesB, linejunk = None, charjunk = None )
+		diff = difflib.ndiff( linesB, linesA, linejunk = None, charjunk = None )
 
 		sublime.active_window().run_command( 'new_window' )
 		win = sublime.active_window()
