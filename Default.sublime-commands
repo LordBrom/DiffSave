@@ -1,0 +1,3 @@
+[
+    { "caption": "SVN: Set scope: directory ",          "command": "svn_set_scope",         "args": { "scope": "dir" } }
+]
