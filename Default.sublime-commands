@@ -1,3 +1,3 @@
 [
-    { "caption": "SVN: Set scope: directory ",          "command": "svn_set_scope",         "args": { "scope": "dir" } }
+    { "caption": "DiffSave: Compare to Save ",          "command": "ds_diff_save",         "args": { "scope": "dir" } }
 ]

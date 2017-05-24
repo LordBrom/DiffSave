@@ -1,11 +1,10 @@
 [{
     "id": "diffsave",
     "caption": "Diff Save",
-    "mnemonic": "V",
     "children":
     	[
 		{ "caption": "-" },
-		{ "caption": "Get repository status", "command": "svn_repo_status" },
+		{ "caption": "Run DiffSave", "command": "ds_diff_save" },
 		{ "caption": "-", "id": "end" }
 	]
 }]
