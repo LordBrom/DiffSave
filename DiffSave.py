@@ -31,21 +31,21 @@ class dsDiffSaveCommand(sublime_plugin.TextCommand, dsController):
 		# diff = difflib.ndiff( linesB, linesA, linejunk = None, charjunk = None )
 		diff = difflib.unified_diff( linesB, linesA )
 
-		# diffStr = ''.join( diff )
+		diffStr = '\n'.join( diff )
 
-		# if len(diffStr):
-		sublime.active_window().run_command( 'new_window' )
-		win = sublime.active_window()
-		win.set_layout( { "cols": [0.0, 1.0], "rows": [0.0, 1.0], "cells": [[0, 0, 1, 1], [0, 0, 1, 1]] } )
+		if len(diffStr):
+			sublime.active_window().run_command( 'new_window' )
+			win = sublime.active_window()
+			win.set_layout( { "cols": [0.0, 1.0], "rows": [0.0, 1.0], "cells": [[0, 0, 1, 1], [0, 0, 1, 1]] } )
 
-		if ds_settings().get( 'toggle_sidebar', False ):
-			win.run_command( 'toggle_side_bar' )
-		if ds_settings().get( 'toggle_menu', False ):
-			win.run_command( 'toggle_menu' )
+			if ds_settings().get( 'toggle_sidebar', False ):
+				win.run_command( 'toggle_side_bar' )
+			if ds_settings().get( 'toggle_menu', False ):
+				win.run_command( 'toggle_menu' )
 
-		newView = win.active_view()
-		newView.set_scratch(1)
-		newView.set_syntax_file("Packages/Diff/Diff.tmLanguage");
-		newView.insert(edit, 0, '\n'.join( diff ))
-		# else:
-			# sublime.status_message( "No changes have been made" );
+			newView = win.active_view()
+			newView.set_scratch(1)
+			newView.set_syntax_file("Packages/Diff/Diff.tmLanguage");
+			newView.insert(edit, 0, diffStr)
+		else:
+			sublime.status_message( "No changes have been made" );
